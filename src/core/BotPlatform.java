@@ -2,7 +2,6 @@ package core;
 
 import bot.BaseBot;
 
-import java.io.IOException;
 import java.util.List;
 
 public class BotPlatform implements Runnable{
@@ -21,6 +20,7 @@ public class BotPlatform implements Runnable{
             while (keepRunning) {
                 String content = mudClient.fetchBatch();
                 System.out.print(content);
+                RESTServer.appendToOutputCache(content);
                 for (BaseBot bot : botList) {
                     bot.publish(content);
                 }
