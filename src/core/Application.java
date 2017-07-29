@@ -10,10 +10,17 @@ import static spark.Spark.*;
 
 public class Application {
     public static void main(String[] args) throws IOException, InterruptedException {
-        get("/hello", (req, res) -> "Hello World");
 
         Client client = new Client();
         client.connect("216.136.9.21", 6666);
+
+        get("/hello", (req, res) -> "Hello" + req.queryParams("name"));
+        get("/cmd", (req, res) -> {
+            String cmd = req.queryParams("run");
+            client.sendMessage(req.queryParams("run"));
+            return "sending " + cmd;
+        });
+
         Thread.sleep(50);
         List<BaseBot> botList = new ArrayList();
         botList.add(new LoginBot(client));

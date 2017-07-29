@@ -20,7 +20,7 @@ public class BotPlatform implements Runnable{
         try {
             while (keepRunning) {
                 String content = mudClient.fetchBatch();
-                System.out.println(content);
+                System.out.print(content);
                 for (BaseBot bot : botList) {
                     bot.publish(content);
                 }
