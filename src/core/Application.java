@@ -6,13 +6,16 @@ import bot.LoginBot;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import static spark.Spark.*;
 
 public class Application {
     public static void main(String[] args) throws IOException, InterruptedException {
+        get("/hello", (req, res) -> "Hello World");
+
         Client client = new Client();
         client.connect("216.136.9.21", 6666);
-        Thread.sleep(100);
-        List<BaseBot> botList = new ArrayList<BaseBot>();
+        Thread.sleep(50);
+        List<BaseBot> botList = new ArrayList();
         botList.add(new LoginBot(client));
 
         BotPlatform platform = new BotPlatform(client,botList);

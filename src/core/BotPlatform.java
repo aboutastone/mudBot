@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class BotPlatform implements Runnable{
+
     private Client mudClient;
     private boolean keepRunning = true;
     private List<BaseBot> botList;
@@ -25,10 +26,7 @@ public class BotPlatform implements Runnable{
                 }
                 Thread.sleep(50);
             }
-        } catch (IOException e) {
-            keepRunning = false;
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             keepRunning = false;
         }
     }

@@ -46,16 +46,4 @@ public class Client {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-
-        Client client = new Client();
-        client.connect("216.136.9.21", 6666);
-        System.out.println(client.fetchBatch());
-        client.sendMessage("gb");
-        Thread.sleep(1000);
-        System.out.println(client.fetchBatch());
-        client.sendMessage("yes");
-        System.out.println(client.fetchBatch());
-    }
 }
